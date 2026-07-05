@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ryuya Komuro / 小室竜也 — Second language acquisition and vocabulary learning researcher, JSPS Postdoctoral Fellow at Tohoku University.">
+<link rel="icon" type="image/jpeg" href="assets/avatar.jpg">
+<title>Ryuya Komuro / 小室竜也</title>
+<style>
+  :root {
+    --bg: #faf9f6;
+    --surface: #ffffff;
+    --text: #23262b;
+    --text-muted: #5b6169;
+    --primary: #1f3a5f;
+    --accent: #9c6b30;
+    --border: #e3e0d8;
+    --tag-bg: #f0ede5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171c;
+      --surface: #1a1e25;
+      --text: #e7e5df;
+      --text-muted: #a7acb5;
+      --primary: #8fb2e0;
+      --accent: #d9b878;
+      --border: #2a2f38;
+      --tag-bg: #212630;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171c; --surface: #1a1e25; --text: #e7e5df; --text-muted: #a7acb5;
+    --primary: #8fb2e0; --accent: #d9b878; --border: #2a2f38; --tag-bg: #212630;
+  }
+  :root[data-theme="light"] {
+    --bg: #faf9f6; --surface: #ffffff; --text: #23262b; --text-muted: #5b6169;
+    --primary: #1f3a5f; --accent: #9c6b30; --border: #e3e0d8; --tag-bg: #f0ede5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui, sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .serif {
+    font-family: ui-serif, Georgia, "Hiragino Mincho ProN", serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  a { color: var(--primary); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: currentColor; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  header.site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 780px; margin: 0 auto; gap: 16px; flex-wrap: wrap; }
+  .brand { font-size: 1.05rem; font-weight: 600; }
+  nav.main-nav { display: flex; align-items: center; gap: 22px; font-size: 0.92rem; }
+  nav.main-nav a { color: var(--text-muted); }
+  nav.main-nav a:hover { color: var(--primary); }
+  #lang-toggle {
+    font: inherit; font-size: 0.85rem; cursor: pointer;
+    background: var(--tag-bg); color: var(--text); border: 1px solid var(--border);
+    border-radius: 999px; padding: 5px 14px;
+  }
+  #lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .eyebrow { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 10px; font-weight: 600; }
+  h2.section-title { font-size: 1.55rem; margin: 0 0 24px; }
+
+  .hero { padding: 64px 0 48px; }
+  .avatar {
+    width: 108px; height: 108px; border-radius: 50%;
+    object-fit: cover; display: block;
+    margin-bottom: 22px;
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--border);
+  }
+  .hero h1 { font-size: 2rem; margin: 0 0 6px; }
+  .hero .position { color: var(--text-muted); font-size: 1rem; margin: 0 0 20px; }
+  .hero .bio { max-width: 62ch; }
+  .link-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 20px; }
+  .link-row a {
+    font-size: 0.88rem; padding: 7px 14px; border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+  }
+  .link-row a:hover { border-color: var(--primary); color: var(--primary); }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 8px; }
+  @media (max-width: 640px) { .cols { grid-template-columns: 1fr; } }
+  h3.sub { font-size: 1rem; margin: 0 0 14px; color: var(--text); }
+  ul.timeline { list-style: none; margin: 0; padding: 0; }
+  ul.timeline li { padding: 0 0 12px 0; font-size: 0.94rem; color: var(--text-muted); }
+  ul.timeline li b { color: var(--text); display: block; font-weight: 500; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; }
+  .tag { background: var(--tag-bg); color: var(--text-muted); font-size: 0.82rem; padding: 5px 12px; border-radius: 999px; }
+
+  h3.group-title { font-size: 1.05rem; margin: 36px 0 14px; }
+  ol.pub-list, ul.plain-list { margin: 0; padding: 0 0 0 1.3em; }
+  ol.pub-list li, ul.plain-list li { font-size: 0.93rem; margin-bottom: 12px; color: var(--text); }
+  ol.pub-list li::marker, ul.plain-list li::marker { color: var(--text-muted); }
+  .pub-note { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
+
+  details.more { margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 16px; }
+  details.more summary { cursor: pointer; font-size: 0.9rem; color: var(--primary); font-weight: 500; }
+  details.more ul.plain-list { margin-top: 16px; }
+
+  .grants li, .awards li { font-size: 0.93rem; margin-bottom: 10px; }
+  .year-badge { color: var(--accent); font-weight: 600; margin-right: 6px; }
+
+  .proj-intro { max-width: 62ch; margin-bottom: 28px; color: var(--text-muted); }
+  .proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 640px) { .proj-grid { grid-template-columns: 1fr; } }
+  .proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  .proj-card .name { font-weight: 600; font-size: 0.98rem; }
+  .proj-card .name a { color: var(--text); }
+  .proj-card .name a:hover { color: var(--primary); }
+  .proj-card .desc { font-size: 0.86rem; color: var(--text-muted); margin: 8px 0 12px; min-height: 2.6em; }
+  .lang-dot { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); }
+  .lang-dot::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--dot, var(--accent)); display: inline-block; }
+  .proj-more { margin-top: 24px; font-size: 0.9rem; }
+
+  footer { padding: 40px 0 60px; }
+  footer .link-row a { font-size: 0.85rem; }
+  footer .copy { margin-top: 24px; font-size: 0.8rem; color: var(--text-muted); }
+
+  [data-i18n="en"] { display: none; }
+  body[data-active-lang="en"] [data-i18n="ja"] { display: none; }
+  body[data-active-lang="en"] [data-i18n="en"] { display: revert; }
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand serif">
+      <span data-i18n="ja">小室竜也</span><span data-i18n="en">Ryuya Komuro</span>
+    </div>
+    <nav class="main-nav">
+      <a href="#about"><span data-i18n="ja">プロフィール</span><span data-i18n="en">About</span></a>
+      <a href="#research"><span data-i18n="ja">研究</span><span data-i18n="en">Research</span></a>
+      <a href="#projects"><span data-i18n="ja">プロジェクト</span><span data-i18n="en">Projects</span></a>
+      <button id="lang-toggle" type="button" aria-label="switch language">EN</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero" id="about">
+    <img class="avatar" src="assets/avatar.jpg" alt="Ryuya Komuro">
+    <h1><span data-i18n="ja">小室 竜也</span><span data-i18n="en">Ryuya Komuro</span></h1>
+    <p class="position">
+      <span data-i18n="ja">日本学術振興会特別研究員PD（東北大学大学院国際文化研究科）</span>
+      <span data-i18n="en">JSPS Postdoctoral Research Fellow, Graduate School of International Cultural Studies, Tohoku University</span>
+    </p>
+    <p class="bio" data-i18n="ja">
+      第二言語習得・語彙習得・英語教育に興味があります。2024年3月、筑波大学大学院人文社会科学研究科にて博士（文学）を取得しました。付随的・意図的語彙学習、語彙サイズテストの妥当性検証、読解テストの自動採点など、実証的・計量的アプローチによる研究に取り組んでいます。現在は日本学術振興会特別研究員 (PD) として東北大学に所属し、言語適性と学習の相互作用の検討や、語彙・文法テストの妥当性検証などのプロジェクトに取り組んでいます。統計解析・心理言語学実験に役立つツールをGitHub上で公開しています。
+    </p>
+    <p class="bio" data-i18n="en">
+      I am interested in second language acquisition, vocabulary learning, and English language education. I received my Ph.D. in Literature from the Graduate School of Humanities and Social Sciences, University of Tsukuba, in March 2024. My research takes an empirical, quantitative approach to topics such as incidental and intentional vocabulary learning, the validation of vocabulary size tests, and automated scoring of reading tests. I am currently a JSPS Postdoctoral Research Fellow (PD) affiliated with Tohoku University, working on projects examining the interaction between language aptitude and learning, and validating vocabulary and grammar tests. I share tools useful for statistical analysis and psycholinguistic experiments on GitHub.
+    </p>
+
+    <div class="link-row">
+      <a href="https://researchmap.jp/Komuro-Ryuya" target="_blank" rel="noopener">researchmap ↗</a>
+      <a href="https://github.com/Ryuya-dot-com" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://orcid.org/0000-0001-9205-0926" target="_blank" rel="noopener">ORCID ↗</a>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h3 class="sub"><span data-i18n="ja">学歴</span><span data-i18n="en">Education</span></h3>
+        <ul class="timeline" data-i18n="ja">
+          <li><b>2024年3月</b>筑波大学大学院 人文社会科学研究群 人文学学位プログラム 修了・博士（文学）</li>
+          <li><b>2021年3月</b>筑波大学大学院 人文社会科学研究科 現代語現代文化専攻 修了（修士）</li>
+        </ul>
+        <ul class="timeline" data-i18n="en">
+          <li><b>Mar. 2024</b>Ph.D. in Literature, Degree Programs in Humanities and Social Sciences, University of Tsukuba</li>
+          <li><b>Mar. 2021</b>M.A., Graduate School of Humanities and Social Sciences, University of Tsukuba</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub"><span data-i18n="ja">職歴</span><span data-i18n="en">Career</span></h3>
+        <ul class="timeline" data-i18n="ja">
+          <li><b>2024年4月–</b>東北大学大学院国際文化研究科／日本学術振興会特別研究員（PD）</li>
+          <li><b>2023年4月–2024年3月</b>日本学術振興会特別研究員（DC2）</li>
+        </ul>
+        <ul class="timeline" data-i18n="en">
+          <li><b>Apr. 2024–</b>JSPS Postdoctoral Research Fellow (PD), Graduate School of International Cultural Studies, Tohoku University</li>
+          <li><b>Apr. 2023–Mar. 2024</b>JSPS Research Fellow (DC2)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <p class="eyebrow"><span data-i18n="ja">研究</span><span data-i18n="en">Research</span></p>
+    <h2 class="section-title"><span data-i18n="ja">研究業績</span><span data-i18n="en">Research &amp; Publications</span></h2>
+
+    <div class="tags">
+      <span class="tag">語彙習得 / Vocabulary Acquisition</span>
+      <span class="tag">第二言語習得 / SLA</span>
+      <span class="tag">英語教育 / English Education</span>
+      <span class="tag">外国語教育 / Foreign Language Education</span>
+      <span class="tag">言語テスティング / Language Testing</span>
+    </div>
+
+    <h3 class="group-title"><span data-i18n="ja">主な論文</span><span data-i18n="en">Selected Publications</span></h3>
+    <ol class="pub-list">
+      <li>Hijikata, Y., Hoshino, Y., Shimizu, H., Komuro, R., Mizugaki, R., Ogiso, T., Tando, K., Hanawa, C., &amp; Ushiro, Y. (2026). Question-answering processes in reading multiple texts in a second language: Evidence from eye tracking and think-aloud protocols. <i>Language Testing</i>.</li>
+      <li>卯城祐司・小室竜也 (2025). TOEIC® Programの大学・高校における活用について –語彙の洗練性指標および複雑性指標に基づく分析と学習指導要領との関連性から–.（招待）</li>
+      <li>卯城祐司・小室竜也 (2025). 英語4技能テストにおける受験者能力の推定：TOEIC L&amp;R・S&amp;WおよびTOEIC Bridge L&amp;R・S&amp;Wのデータを用いて.（招待）</li>
+      <li>Komuro, R. (2024). Comparing gap-filling and multiple-choice gloss based on the involvement load hypothesis: A Bayesian estimation of homogeneity. <i>Language Education &amp; Technology</i>, 61, 59-80. <span class="pub-note" data-i18n="ja">— 2025年度LET学会賞（学術論文賞）受賞</span><span class="pub-note" data-i18n="en">— Awarded the LET Society Award (Best Paper) 2025</span></li>
+      <li>Ogiso, T., Komuro, R., Nahatame, S., Mizugaki, R., Tando, K., Mikami, Y., &amp; Ushiro, Y. (2023). Effects of image instruction on coherent understanding of the protagonist and spatial information during narrative reading for learners of English as a foreign language. <i>ARELE</i>, 34, 65-80.</li>
+    </ol>
+    <p class="pub-note">
+      <span data-i18n="ja">※ 全論文リストは researchmap をご覧ください。</span>
+      <span data-i18n="en">See researchmap for the complete list of publications.</span>
+      <a href="https://researchmap.jp/Komuro-Ryuya" target="_blank" rel="noopener">researchmap ↗</a>
+    </p>
+
+    <h3 class="group-title"><span data-i18n="ja">受賞・研究奨励</span><span data-i18n="en">Awards</span></h3>
+    <ul class="plain-list awards">
+      <li><span class="year-badge">2025</span>外国語教育メディア学会(LET) 学会賞（論文賞）</li>
+      <li><span class="year-badge">2024</span>日本言語テスト学会(JLTA) 2024年度若手研究者助成事業－大友賢二奨励賞（小室竜也・黒川皐月）</li>
+      <li><span class="year-badge">2022</span>日本英語検定協会 英検研究助成 実践部門 入選（岡田龍平・小室竜也）</li>
+      <li><span class="year-badge">2021</span>次世代研究者挑戦的研究プログラム 研究奨励費等支給対象学生採用</li>
+      <li><span class="year-badge">2021</span>教科書研究センター 大学院生の教科書研究論文助成金</li>
+      <li><span class="year-badge">2019</span>日本英語検定協会 英検研究助成 研究部門 入選</li>
+    </ul>
+
+    <h3 class="group-title"><span data-i18n="ja">競争的資金</span><span data-i18n="en">Grants</span></h3>
+    <ul class="plain-list grants">
+      <li><span class="year-badge">2025–2029</span><span data-i18n="ja">基盤研究(B)「生成AI技術を活用した個別最適な学びを実現する英文読解テストの開発」（卯城祐司・小室竜也・濱田彰・星野由子、研究分担者）</span><span data-i18n="en">Grant-in-Aid for Scientific Research (B), "Developing an English reading test for personalized learning using generative AI" (Ushiro, Komuro, Hamada, Hoshino; Co-Investigator)</span></li>
+      <li><span class="year-badge">2025–2028</span><span data-i18n="ja">特別研究員奨励費(PD)「脳イメージングを用いた言語的性と学習の相互作用の検討」（研究代表者）</span><span data-i18n="en">JSPS Research Fellowship (PD), "The interaction between linguistic gender and learning: A brain imaging approach" (Principal Investigator)</span></li>
+      <li><span class="year-badge">2025–2028</span><span data-i18n="ja">若手研究「分野横断型アプローチによる英語冠詞の文法テストの妥当性検証」（研究代表者）</span><span data-i18n="en">Grant-in-Aid for Early-Career Scientists, "Validating a grammar test for English articles: A cross-disciplinary approach" (Principal Investigator)</span></li>
+      <li><span class="year-badge">2023–2025</span><span data-i18n="ja">特別研究員奨励費(DC2)「日本人英語学習者の発表語彙知識測定」（研究代表者）</span><span data-i18n="en">JSPS Research Fellowship (DC2), "Measuring productive vocabulary knowledge of Japanese EFL learners" (Principal Investigator)</span></li>
+    </ul>
+
+    <details class="more">
+      <summary><span data-i18n="ja">学会発表を見る（約20件）</span><span data-i18n="en">Show conference presentations (~20)</span></summary>
+      <ul class="plain-list">
+        <li>Uchihara, T., Pellicer-Sánchez, A., Komuro, R., Chang, L. L.-C., Doi, A., Cui, H., Jeong, H., Revesz, A., Saito, K., &amp; Sugiura, M. The effects of multimodal input on L2 vocabulary learning: Exploring its neurocognitive mechanisms. EuroSLA35, 2026.</li>
+        <li>Komuro, R., Hamada, A., Hoshino, Y., &amp; Ushiro, Y. Automated scoring of open-ended responses in computer-adaptive English reading tests: Comparing generative AI accuracy. 10th Annual Conference for the Association for Reading and Writing in Asia, 2026.</li>
+        <li>Oikawa, G., Sekiguchi, S., &amp; Komuro, R. The effects of written languaging on lexical development in L2 writing through AI-generated feedback. Technology-Enhanced Language Learning International Conference, 2025.</li>
+        <li>小室竜也・及川凱亜. 日本人EFL学習者のための語彙サイズテストVST-NJ8の妥当性検証：「わからない」選択肢の追加と回答時間の関係性. 日本言語テスト学会(JLTA) 第28回全国研究大会, 2025.</li>
+        <li>Komuro, R., Uchihara, T., Jeong, H., Kurokawa, S., &amp; Sugiura, M. Secondary meaning learning of homographs: How words with multiple meanings are acquired. Vocab@Maryland, 2025.</li>
+        <li>Suzuki, K., &amp; Komuro, R. Who benefits from semantic elaboration using the word part strategy for English vocabulary learning? American Association for Applied Linguistics, 2025.</li>
+        <li>小室竜也・黒川皐月. Yes No語彙テストにおける採点方法の検討：ベイズモデル選択とテスト情報関数に基づいて. 日本言語テスト学会(JLTA) 第27回全国研究大会, 2024.</li>
+        <li>卯城祐司・小室竜也・下山聡子. TOEIC® Programの大学・高校における活用について–「学習内容との関係性」と「就業経験有無の影響」に関する調査分析結果に示唆されることとは–. 大学英語教育学会(JACET)第63回国際大会, 2024.</li>
+        <li>小室竜也・前田啓貴・久保佑輔. 読解中の未知語推測能力の測定：Guessing from Context Testの妥当性検証. 日本言語テスト学会(JLTA) 第26回全国研究大会, 2023.</li>
+        <li>Hijikata, Y., Komuro, R., Hanawa, C., Ta, N., Mizugaki, R., Tando, K., Ogiso, T., &amp; Ushiro, Y. Influence of Question Types on Multiple-Document Reading Processes in a Second Language: An Eye-Tracking Study. AMLaP 2023, 2023.</li>
+        <li>卯城祐司・小室竜也. 令和4年度の新課程英語教科書コーパス及び共通テストコーパスに基づくTOEIC® L&amp;R、TOEIC Bridge® L&amp;Rの語彙の特徴2（特徴語の検討）. 大学英語教育学会(JACET)第62回国際大会, 2023.</li>
+        <li>土方裕子・星野由子・清水遥・小木曽智子・小室竜也・卯城祐司. 日本人英語学習者による複数文章読解問題の解答プロセス 発話プロトコルに基づく検証. 全国英語教育学会第48回香川研究大会, 2023.</li>
+        <li>小室竜也. 付随的語彙学習における遭遇頻度・読解不安・語彙熟達度の関係：読解中の辞書使用を通して. 全国英語教育学会第48回香川研究大会, 2023.</li>
+        <li>卯城祐司・小室竜也. 令和4年度の新課程英語教科書コーパス及び共通テストコーパスに基づくTOEIC® L&amp;R、TOEIC Bridge® L&amp;Rの語彙の特徴1（カバー率の検討）. 全国英語教育学会第48回香川研究大会, 2023.</li>
+        <li>小室竜也. 関与負荷仮説に基づく空所補充および多肢選択式問題の比較：ベイズ推定による同質性の検討. 外国語教育メディア学会(LET)第62回全国研究大会, 2023.</li>
+        <li>Ushiro, Y., &amp; Komuro, R. The effects of reading instruction on recall rate: A focus on second language learners. The 33rd Annual Meeting of the Society for Text &amp; Discourse, 2023.</li>
+        <li>小木曽智子・小室竜也・名畑目真吾・水書亮・工藤大奈・丹藤慧也・三上洋介・小野由香子・卯城祐司. 読解教示と学習者の熟達度が物語文の空間・登場人物の一貫した理解に与える影響―思考発話プロトコルの分析から―. 全国英語教育学会第47回北海道研究大会, 2022.</li>
+        <li>小室竜也. 令和4年度検定教科書の語彙学習タスクの傾向調査—中学校と高校1年生の教科書を対象に—. 全国英語教育学会第47回北海道研究大会, 2022.</li>
+        <li>Komuro, R., Mori, Y., Hosoda, M., Mizugaki, R., Tendo, K., Mikami, Y., &amp; Ushiro, Y. The effects of reading instruction on temporal coherence maintenance: Focusing on second language learners. The 32nd Annual Meeting of the Society for Text &amp; Discourse, 2022.</li>
+        <li>小室竜也. 日本人高校生および高専生の語彙学習方略使用と語彙サイズの関係―ランダムフォレストを用いた検討―. 外国語教育メディア学会(LET)関東支部第147回研究大会, 2022.</li>
+      </ul>
+      <p class="pub-note">
+        <span data-i18n="ja">researchmap上には全30件程度の口頭発表が掲載されています。全件は researchmap をご覧ください。</span>
+        <span data-i18n="en">researchmap lists around 30 presentations in total — see researchmap for the complete list.</span>
+      </p>
+    </details>
+  </section>
+
+  <section id="projects">
+    <p class="eyebrow"><span data-i18n="ja">プロジェクト</span><span data-i18n="en">Projects</span></p>
+    <h2 class="section-title"><span data-i18n="ja">GitHubプロジェクト</span><span data-i18n="en">GitHub Projects</span></h2>
+    <p class="proj-intro" data-i18n="ja">
+      研究のための統計解析ツールや、Web上で動作する心理言語学実験タスクをR・Python・Julia・JavaScriptで開発しています。以下はその一部です。
+    </p>
+    <p class="proj-intro" data-i18n="en">
+      I build statistical-analysis tools and browser-based psycholinguistic experiment tasks in R, Python, Julia, and JavaScript. A selection is shown below.
+    </p>
+
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="name"><a href="https://github.com/Ryuya-dot-com/BayesianMGMFRM.jl" target="_blank" rel="noopener">BayesianMGMFRM.jl</a></div>
+        <div class="desc">Bayesian many-facet Rasch and multidimensional GMFRM workflows.</div>
+        <span class="lang-dot" style="--dot:#9558b2">Julia</span>
+      </div>
+      <div class="proj-card">
+        <div class="name"><a href="https://github.com/Ryuya-dot-com/mfrmr" target="_blank" rel="noopener">mfrmr</a></div>
+        <div class="desc" data-i18n="ja">Many-Facet Rasch Measurement のためのRパッケージ。</div>
+        <div class="desc" data-i18n="en">An R package for Many-Facet Rasch Measurement.</div>
+        <span class="lang-dot" style="--dot:#2166f0">R</span>
+      </div>
+      <div class="proj-card">
+        <div class="name"><a href="https://github.com/Ryuya-dot-com/MFRM_Python_Application" target="_blank" rel="noopener">MFRM_Python_Application</a></div>
+        <div class="desc" data-i18n="ja">Many-Facet Rasch Measurement のPythonアプリケーション。</div>
+        <div class="desc" data-i18n="en">A Python application for Many-Facet Rasch Measurement.</div>
+        <span class="lang-dot" style="--dot:#3572A5">Python</span>
+      </div>
+      <div class="proj-card">
+        <div class="name"><a href="https://github.com/Ryuya-dot-com/LexicalDiversity" target="_blank" rel="noopener">LexicalDiversity</a></div>
+        <div class="desc" data-i18n="ja">語彙多様性指標を計算するツール。</div>
+        <div class="desc" data-i18n="en">A tool for computing lexical diversity indices.</div>
+        <span class="lang-dot" style="--dot:#3572A5">Python</span>
+      </div>
+      <div class="proj-card">
+        <div class="name"><a href="https://github.com/Ryuya-dot-com/LJT_CAT" target="_blank" rel="noopener">LJT_CAT</a></div>
+        <div class="desc" data-i18n="ja">Listening Judgment Task のコンピュータ適応型テスト実装。</div>
+        <div class="desc" data-i18n="en">A computer-adaptive test implementation of the Listening Judgment Task.</div>
+        <span class="lang-dot" style="--dot:#e34c26">HTML/JS</span>
+      </div>
+      <div class="proj-card">
+        <div class="name"><a href="https://github.com/Ryuya-dot-com/Lex30" target="_blank" rel="noopener">Lex30</a></div>
+        <div class="desc" data-i18n="ja">語彙的豊かさの指標 Lex30 の測定タスク。</div>
+        <div class="desc" data-i18n="en">A measurement task for the Lex30 lexical richness index.</div>
+        <span class="lang-dot" style="--dot:#f1e05a">JavaScript</span>
+      </div>
+    </div>
+    <p class="proj-more">
+      <a href="https://github.com/Ryuya-dot-com?tab=repositories" target="_blank" rel="noopener">
+        <span data-i18n="ja">GitHubで公開リポジトリをすべて見る →</span>
+        <span data-i18n="en">View all public repositories on GitHub →</span>
+      </a>
+    </p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="link-row">
+    <a href="https://researchmap.jp/Komuro-Ryuya" target="_blank" rel="noopener">researchmap</a>
+    <a href="https://github.com/Ryuya-dot-com" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://orcid.org/0000-0001-9205-0926" target="_blank" rel="noopener">ORCID</a>
+  </div>
+  <p class="copy">© 2026 Ryuya Komuro / 小室竜也</p>
+</footer>
+
+<script>
+  (function () {
+    var body = document.body;
+    var btn = document.getElementById('lang-toggle');
+    function apply(lang) {
+      body.setAttribute('data-active-lang', lang);
+      document.documentElement.setAttribute('lang', lang);
+      btn.textContent = lang === 'ja' ? 'EN' : '日本語';
+    }
+    var saved = 'ja';
+    try { saved = localStorage.getItem('site-lang') || 'ja'; } catch (e) {}
+    apply(saved);
+    btn.addEventListener('click', function () {
+      var next = body.getAttribute('data-active-lang') === 'ja' ? 'en' : 'ja';
+      apply(next);
+      try { localStorage.setItem('site-lang', next); } catch (e) {}
+    });
+  })();
+</script>
+
+</body>
+</html>
